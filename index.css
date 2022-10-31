@@ -1,0 +1,54 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    text-align: center;
+
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(17, 42, 95);
+}
+
+.topBar {
+    color: rgb(116, 255, 225);
+
+    margin: 30px 0px 40px;
+}
+
+h1 {
+    font-size: 150px;
+}
+
+.arena {
+    /*display: flex;
+    justify-content: center;*/
+
+    width: 100%;
+}
+
+.arena button {
+    /*width: 50%;*/
+    /*height: 350px;*/
+
+    background-color: rgb(116, 255, 225);
+
+    width: 95%;
+    height: 500px;
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 50px;
+
+    /*margin: 26px;*/
+}
+
+#firstButton {
+    /*margin-right: 13px;*/
+    margin-bottom: 25px;
+}
+
+#secondButton {
+    /*margin-left: 13px;*/
+}
