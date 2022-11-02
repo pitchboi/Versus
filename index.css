@@ -1,3 +1,7 @@
+:root {
+    --efficiency-color: red;
+}
+
 * {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -22,6 +26,8 @@ h1 {
 
 ul {
     list-style: none;
+    position: relative;
+    right: 19px;
 }
 
 li {
@@ -108,6 +114,17 @@ li {
     font-size: 30px;
 }
 
+#efficiency {
+    color: var(--efficiency-color);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#winner {
+    color: gold;
+    font-weight: bold;
+}
+
 /*@media only screen and (min-width: 768px) and (orientation:portrait) {*/
 @media only screen and (min-width: 980px) and (orientation:landscape) {
     h1 {
@@ -184,5 +201,9 @@ li {
 
     #copyright {
         font-size: 15px;
+    }
+
+    li {
+        font-size: 22px;
     }
 }

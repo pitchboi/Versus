@@ -5,6 +5,7 @@ let resultArray = [];
 let tempArray = [];
 let round = 0;
 let iteration = 0;
+let efficiency = 0;
 let matches = 1;
 let firstButtonNumber = 0;
 let secondButtonNumber = 0;
@@ -15,14 +16,20 @@ const elSecondButton = document.getElementById("secondButton");
 const elArena = document.getElementById("arena-el");
 const elInput = document.getElementById("input-el");
 const elTextInput = document.getElementById("textInput");
+const elEfficiency = document.getElementById("efficiency");
+
+const cssRoot = document.querySelector(":root");
+const cssRootStyle = getComputedStyle(cssRoot);
 
 hideElement(elArena);
+hideElement(elEfficiency);
 
 function startGame() {
     readInput();
     createArena();
     nextMatch();
     hideElement(elInput);
+    //hideElement(elUl);
     showElement(elArena);
 }
 
@@ -77,8 +84,8 @@ function nextMatch() {
     /*elUl.innerHTML = "";
     for (i = 0; i < resultArray.length; i++) {
         elUl.innerHTML += `<li>${inputArray[i]}: ${resultArray[i]}</li>`;
-    }*/
-    /*elUl.innerHTML += `<li>-------------------</li>`
+    }
+    elUl.innerHTML += `<li>-------------------</li>`
     for (i = 0; i < resultArray.length; i++) {
         elUl.innerHTML += `<li>${inputArray[i]}: ${tempArray[i]}</li>`;
     }*/
@@ -97,20 +104,25 @@ function clickButton(buttonNumber) {
     // Deduct one point from the loser's slot in the result array
     let temp = 0;
     let otherTemp = 0;
+    let otherOtherTemp = 0;
 
     if (buttonNumber === 1) { // First button
         resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
         temp = resultArray[secondButtonNumber];
         otherTemp = secondButtonNumber;
+        otherOtherTemp = firstButtonNumber;
     } else { // Second button
         resultArray[firstButtonNumber] = resultArray[secondButtonNumber] - 1;
         temp = resultArray[firstButtonNumber];
         otherTemp = firstButtonNumber;
+        otherOtherTemp = secondButtonNumber;
     }
 
     // Bump lower losers down a peg
     for (i = 0; i < resultArray.length; i++) {
-        if (tempArray[i] <= temp && i !== otherTemp) {
+        //if ((tempArray[i] <= temp || (resultArray[i] <= temp && i < firstButtonNumber)) && i !== otherTemp) {
+        if (resultArray[i] <= temp && i < otherOtherTemp && i !== otherTemp) {
+        //if (tempArray[i] <= temp && i !== otherTemp) {
             resultArray[i] -= 1;
         }
     }
@@ -140,7 +152,20 @@ function endGame() {
     resultArray.sort(function(a,b) {return b[0]-a[0]});
     elUl.innerHTML = "";
     for (i = 0; i < resultArray.length; i++) {
-        /*elUl.innerHTML += `<li>${i + 1}. ${inputArray[i]}</li>`;*/
-        elUl.innerHTML += `<li>${i + 1}. ${resultArray[i][1]}</li>`;
+        if (i === 0) {
+            elUl.innerHTML += `<li id="winner">${i + 1}. ${resultArray[i][1]}</li>`;
+        } else {
+            elUl.innerHTML += `<li>${i + 1}. ${resultArray[i][1]}</li>`;
+        }
+    }
+    efficiency = 100 - (matches / arenaArray.length * 100)
+    elEfficiency.textContent = Math.floor(efficiency).toString() + "% Efficiency";
+    showElement(elUl);
+    showElement(elEfficiency);
+
+    if (efficiency > 0) {
+        cssRoot.style.setProperty('--efficiency-color', 'lightgreen');
+    } else {
+        cssRoot.style.setProperty('--efficiency-color', 'red');
     }
 }
