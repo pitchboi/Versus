@@ -70,10 +70,10 @@ function nextMatch() {
     }
 
     // Display test totals
-    /*elUl.innerHTML = "";
+    elUl.innerHTML = "";
     for (i = 0; i < resultArray.length; i++) {
         elUl.innerHTML += `<li>${inputArray[i]}: ${resultArray[i]}</li>`;
-    }*/
+    }
 
     // Check if first and second numbers are unequal, and as long as all items on list are 'in play', the matchup can be skipped because the answer is already known
     if (resultArray[firstButtonNumber] !== resultArray[secondButtonNumber] && allInPlay) {
@@ -95,25 +95,25 @@ function clickButton(buttonNumber) {
         if (resultArray[firstButtonNumber] - 1 < resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[secondButtonNumber];
-        } else if (resultArray[firstButtonNumber] - 1 > resultArray[secondButtonNumber] - 1) {
+        } else if (resultArray[firstButtonNumber] - 1 >= resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[secondButtonNumber] + 1;
-        } else {
+        } /*else {
             resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[secondButtonNumber];
-        }
+        }*/
         otherTemp = secondButtonNumber;
     } else { // Second button
         if (resultArray[secondButtonNumber] - 1 < resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[firstButtonNumber];
-        } else if (resultArray[secondButtonNumber] - 1 > resultArray[firstButtonNumber] - 1) {
+        } else if (resultArray[secondButtonNumber] - 1 >= resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[firstButtonNumber] + 1;
-        } else {
+        } /*else {
             resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[firstButtonNumber];
-        }
+        }*/
         otherTemp = firstButtonNumber;
     }
 
