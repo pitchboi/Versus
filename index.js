@@ -8,7 +8,6 @@ let iteration = 0;
 let matches = 1;
 let firstButtonNumber = 0;
 let secondButtonNumber = 0;
-let allInPlay = false;
 
 const elUl = document.getElementById("testList");
 const elFirstButton = document.getElementById("firstButton");
@@ -73,11 +72,6 @@ function nextMatch() {
 
     // Bump the round number up to reflect what round we're on (starts at 1, not 0)
     round += 1;
-
-    // Check if all items have been tested at least once, and if so, all are 'in play'
-    if (round === inputArray.length) {
-        allInPlay = true;
-    }
 
     // Display test totals **************************************** FOR DEBUG ****************************************
     /*elUl.innerHTML = "";
