@@ -51,7 +51,7 @@ function readInput() {
     inputString += "fine china" + "\n"
     inputString += "highway 95" + "\n"
     inputString += "bank account (feat. Lil Uzi Vert)"*/
-    inputString = elTextInput.textContent
+    inputString = elTextInput.value
     inputArray = inputString.split("\n");
 }
 
