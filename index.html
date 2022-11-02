@@ -10,13 +10,19 @@
         </div>
         <div class="input" id="input-el">
             <!--<input type="text" id="textInput">-->
-            <textarea id="textInput" spellcheck="false"></textarea>
+            <select id="category" onchange="changeInput()">
+                <option value="rappers">Rappers</option>
+                <option value="carBrands">Car Brands</option>
+                <option value="custom">Custom...</option>
+            </select>
             <div></div>
-            <button onclick="startGame()">Go</button>
+            <textarea id="textInput" spellcheck="false" placeholder="Enter list here..."></textarea>
+            <div></div>
+            <button id="goButton" onclick="startGame()" onmouseenter="changeButtonColor('hover','goButton')" onmouseleave="changeButtonColor('leave','goButton')" onmousedown="changeButtonColor('click','goButton')" onmouseup="changeButtonColor('unclick','goButton')">Go</button>
         </div>
         <div class="arena" id="arena-el">
-            <button id="firstButton" onclick="clickButton(1)">Song One</button>
-            <button id="secondButton" onclick="clickButton(2)">Song Two</button>
+            <button id="firstButton" onclick="clickButton(1)" onmouseenter="changeButtonColor('hover','firstButton')" onmouseleave="changeButtonColor('leave','firstButton')" onmousedown="changeButtonColor('click','firstButton')" onmouseup="changeButtonColor('unclick','firstButton')">Song One</button>
+            <button id="secondButton" onclick="clickButton(2)" onmouseenter="changeButtonColor('hover','secondButton')" onmouseleave="changeButtonColor('leave','secondButton')" onmousedown="changeButtonColor('click','secondButton')" onmouseup="changeButtonColor('unclick','secondButton')">Song Two</button>
             <!--<button onclick="nextMatch()">SKIP</button>-->
         </div>
         <ul id="testList"></ul>

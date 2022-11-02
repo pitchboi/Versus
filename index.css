@@ -1,5 +1,11 @@
 :root {
     --efficiency-color: red;
+    --button-color-hover: rgb(192, 253, 240);
+    --button-color-click: rgb(97, 218, 191);
+    --button-color-normal: rgb(116, 255, 225);
+    --goButton-color-current: var(--button-color-normal);
+    --firstButton-color-current: var(--button-color-normal);
+    --secondButton-color-current: var(--button-color-normal);
 }
 
 * {
@@ -40,7 +46,7 @@ li {
 
     /*margin: 30px 0px 40px;*/
 
-    height: 20%;
+    height: 13%;
 }
 
 .arena {
@@ -54,8 +60,6 @@ li {
 .arena button {
     /*width: 50%;*/
     /*height: 350px;*/
-
-    background-color: rgb(116, 255, 225);
 
     width: 95%;
     height: 500px;
@@ -73,8 +77,6 @@ li {
 }
 
 .input button {
-    background-color: rgb(116, 255, 225);
-
     width: 50%;
     height: 120px;
 
@@ -86,13 +88,19 @@ li {
     margin-top: 20px;
 }
 
+.input option {
+    height: 40px;
+    font-size: 15px;
+}
+
 #firstButton {
-    /*margin-right: 13px;*/
+    background-color: var(--firstButton-color-current);
     margin-bottom: 25px;
 }
 
 #secondButton {
-    /*margin-left: 13px;*/
+    background-color: var(--secondButton-color-current);
+    margin-bottom: 25px;
 }
 
 #textInput {
@@ -104,6 +112,15 @@ li {
     max-height: 80%;
     font-size: 60px;
     text-align: left;
+}
+
+#category {
+    width: 90%;
+    height: 8%;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    background-color: white;
 }
 
 #copyright {
@@ -123,6 +140,10 @@ li {
 #winner {
     color: gold;
     font-weight: bold;
+}
+
+#goButton {
+    background-color: var(--goButton-color-current);
 }
 
 /*@media only screen and (min-width: 768px) and (orientation:portrait) {*/
@@ -151,9 +172,9 @@ li {
         width: 95%;
         min-width: 95%;
         max-width: 95%;
-        height: 70%;
-        min-height: 70%;
-        max-height: 70%;
+        height: 55%;
+        min-height: 55%;
+        max-height: 55%;
         font-size: 40px;
     }
 
@@ -162,11 +183,24 @@ li {
         top: 20px;
         font-size: 20px;
     }
+
+    #category {
+        width: 95%;
+        height: 15%;
+        margin-top: 12px;
+        margin-bottom: 20px;
+        font-size: 40px;
+        background-color: white;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
+    li {
+        font-size: 22px;
+    }
+
     .topBar {
-        height: 10%;
+        height: 80px;
     }
 
     .arena button {
@@ -193,9 +227,9 @@ li {
         width: 30%;
         min-width: 30%;
         max-width: 30%;
-        height: 85%;
-        min-height: 85%;
-        max-height: 85%;
+        height: 75%;
+        min-height: 75%;
+        max-height: 75%;
         font-size: 20px;
     }
 
@@ -203,7 +237,12 @@ li {
         font-size: 15px;
     }
 
-    li {
-        font-size: 22px;
+    #category {
+        width: 30.5%;
+        height: 35px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        background-color: white;
     }
 }

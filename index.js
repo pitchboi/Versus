@@ -17,15 +17,169 @@ const elArena = document.getElementById("arena-el");
 const elInput = document.getElementById("input-el");
 const elTextInput = document.getElementById("textInput");
 const elEfficiency = document.getElementById("efficiency");
+const elCategory = document.getElementById("category");
+const elGoButton = document.getElementById("goButton");
 
 const cssRoot = document.querySelector(":root");
 const cssRootStyle = getComputedStyle(cssRoot);
 
+const listRappers = `Pop Smoke
+Kid Cudi
+Big Sean
+Don Toliver
+The Weeknd
+Nas
+Juice WRLD
+Rick Ross
+Childish Gambino
+Logic
+Denzel Curry
+Pusha T
+Migos
+Young Thug
+Frank Ocean
+Tory Lanez
+Bryson Tiller
+The Game
+Lil Baby
+Eminem
+Tyler, the Creator
+Chris Brown
+Future
+NAV
+B.o.B
+Gorillaz
+21 Savage
+Nicki Minaj
+Travis Scott
+Meek Mill
+Lil Wayne
+Joey Bada$$
+Gunna
+Usher
+Cardi B
+PARTYNEXTDOOR
+Wiz Khalifa
+Russ
+Chance the Rapper
+Jack Harlow
+Drake
+Lil Uzi Vert
+T-Pain
+Roddy Ricch
+A Boogie wit da Hoodie
+Trey Songz
+Post Malone
+J. Cole
+Mac Miller
+Gang Starr
+Lupe Fiasco
+Kendrick Lamar
+Tech N9ne
+Gucci Mane
+A$AP Rocky
+Lil Nas X
+XXXTENTACION
+Yelawolf
+Kanye West
+Trippie Redd
+JAY-Z`
+const listCarBrands = `Toyota
+Honda
+Chevrolet
+Ford
+Mercedes-Benz
+Jeep
+BMW
+Porsche
+Subaru
+Nissan
+Cadillac
+Volkswagen
+Lexus
+Audi
+Ferrari
+Volvo
+Jaguar
+GMC
+Buick
+Acura
+Bentley
+Dodge
+Hyundai
+Lincoln
+Mazda
+Land Rover
+Tesla
+Kia
+Chrysler
+Pontiac
+Infiniti
+Mitsubishi
+Oldsmobile
+Maserati
+Aston Martin
+Fiat
+Mini
+Alfa Romeo
+Saab
+Suzuki`
+
 hideElement(elArena);
 hideElement(elEfficiency);
 
+elCategory.value = "";
+
+function changeButtonColor(state, object) {
+    let color;
+
+    switch (state) {
+        case "hover":
+            color = cssRootStyle.getPropertyValue('--button-color-hover');
+            break;
+        case "click":
+            color = cssRootStyle.getPropertyValue('--button-color-click');
+            break;
+        default:
+            color = cssRootStyle.getPropertyValue('--button-color-normal');
+            break;
+    }
+
+    switch (object) {
+        case "goButton":
+            cssRoot.style.setProperty('--goButton-color-current', color)
+            break;
+        case "firstButton":
+            cssRoot.style.setProperty('--firstButton-color-current', color)
+            break;
+        case "secondButton":
+            cssRoot.style.setProperty('--secondButton-color-current', color)
+            break;
+    }
+}
+
+function changeInput() {
+    switch (elCategory.value) {
+        case "rappers":
+            elTextInput.value = listRappers;
+            break;
+        case "carBrands":
+            elTextInput.value = listCarBrands;
+            break;
+        case "custom":
+            elTextInput.value = "";
+            break;
+        default: // blank
+            elTextInput.value = "";
+            break;
+    }
+}
+
 function startGame() {
-    readInput();
+    if (!readInput()) {
+        alert("You need to enter at least 2 items in the box");
+        return;
+    }
     createArena();
     nextMatch();
     hideElement(elInput);
@@ -51,6 +205,13 @@ function readInput() {
 
     // Filter array
     inputArray = inputArray.filter(item => item.trim().length > 0);
+
+    // Check amount of items
+    if (inputArray.length < 2) { // Need at least 2 items
+        return false;
+    } else {
+        return true; // Good to go!
+    }
 }
 
 function createArena() {
