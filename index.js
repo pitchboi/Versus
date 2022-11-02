@@ -92,6 +92,7 @@ function nextMatch() {
 
     // Check if first and second numbers are unequal, and as long as all items on list are 'in play', the matchup can be skipped because the answer is already known
     if (tempArray[firstButtonNumber] !== tempArray[secondButtonNumber]) {
+    //if (tempArray[firstButtonNumber] !== tempArray[secondButtonNumber]) {
         if (round === arenaArray.length) {
             endGame(); // End the game, rounds are all done!
         } else {
@@ -101,29 +102,19 @@ function nextMatch() {
 }
 
 function clickButton(buttonNumber) {
-    // Deduct one point from the loser's slot in the result array
-    let temp = 0;
-    let otherTemp = 0;
-    let otherOtherTemp = 0;
-
     if (buttonNumber === 1) { // First button
         resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
-        temp = resultArray[secondButtonNumber];
-        otherTemp = secondButtonNumber;
-        otherOtherTemp = firstButtonNumber;
-    } else { // Second button
-        resultArray[firstButtonNumber] = resultArray[secondButtonNumber] - 1;
-        temp = resultArray[firstButtonNumber];
-        otherTemp = firstButtonNumber;
-        otherOtherTemp = secondButtonNumber;
-    }
-
-    // Bump lower losers down a peg
-    for (i = 0; i < resultArray.length; i++) {
-        //if ((tempArray[i] <= temp || (resultArray[i] <= temp && i < firstButtonNumber)) && i !== otherTemp) {
-        if (resultArray[i] <= temp && i < otherOtherTemp && i !== otherTemp) {
-        //if (tempArray[i] <= temp && i !== otherTemp) {
-            resultArray[i] -= 1;
+        for (i = 0; i < resultArray.length; i++) {
+            if (tempArray[i] <= resultArray[secondButtonNumber]) {
+                resultArray[i] = tempArray[i] - 1;
+            }
+        }
+    } else {
+        resultArray[secondButtonNumber] = resultArray[firstButtonNumber] + 1;
+        for (i = 0; i < resultArray.length; i++) {
+            if (tempArray[i] >= resultArray[secondButtonNumber]) {
+                resultArray[i] = tempArray[i] + 1;
+            }
         }
     }
 
