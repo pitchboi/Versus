@@ -70,10 +70,10 @@ function nextMatch() {
     }
 
     // Display test totals **************************************** FOR DEBUG ****************************************
-    /*elUl.innerHTML = "";
+    elUl.innerHTML = "";
     for (i = 0; i < resultArray.length; i++) {
         elUl.innerHTML += `<li>${inputArray[i]}: ${resultArray[i]}</li>`;
-    }*/
+    }
 
     // Check if first and second numbers are unequal, and as long as all items on list are 'in play', the matchup can be skipped because the answer is already known
     if (resultArray[firstButtonNumber] !== resultArray[secondButtonNumber] && allInPlay) {
