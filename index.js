@@ -92,25 +92,25 @@ function clickButton(buttonNumber) {
     let otherOtherTemp = 0;
 
     if (buttonNumber === 1) { // First button
-        if (resultArray[firstButtonNumber] - 1 < resultArray[secondButtonNumber] - 1) {
+        //if (resultArray[firstButtonNumber] - 1 < resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[secondButtonNumber];
-        } else if (resultArray[firstButtonNumber] - 1 >= resultArray[secondButtonNumber] - 1) {
+        /*} else if (resultArray[firstButtonNumber] - 1 >= resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[secondButtonNumber] + 1;
-        } /*else {
+        }*/ /*else {
             resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[secondButtonNumber];
         }*/
         otherTemp = secondButtonNumber;
     } else { // Second button
-        if (resultArray[secondButtonNumber] - 1 < resultArray[firstButtonNumber] - 1) {
+        //if (resultArray[secondButtonNumber] - 1 < resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[firstButtonNumber];
-        } else if (resultArray[secondButtonNumber] - 1 >= resultArray[firstButtonNumber] - 1) {
+        /*} else if (resultArray[secondButtonNumber] - 1 >= resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[firstButtonNumber] + 1;
-        } /*else {
+        }*/ /*else {
             resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[firstButtonNumber];
         }*/
