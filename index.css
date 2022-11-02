@@ -100,6 +100,14 @@ li {
     text-align: left;
 }
 
+#copyright {
+    color: rgba(255, 255, 255, 0.459);
+    position: absolute;
+    right: 36%;
+    bottom: 10px;
+    font-size: 30px;
+}
+
 /*@media only screen and (min-width: 768px) and (orientation:portrait) {*/
 @media only screen and (min-width: 980px) and (orientation:landscape) {
     h1 {
@@ -130,6 +138,12 @@ li {
         min-height: 70%;
         max-height: 70%;
         font-size: 40px;
+    }
+
+    #copyright {
+        right: 20px;
+        top: 20px;
+        font-size: 20px;
     }
 }
 
@@ -166,5 +180,9 @@ li {
         min-height: 85%;
         max-height: 85%;
         font-size: 20px;
+    }
+
+    #copyright {
+        font-size: 15px;
     }
 }
