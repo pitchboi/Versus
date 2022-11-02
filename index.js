@@ -15,9 +15,6 @@ const elInput = document.getElementById("input-el");
 const elTextInput = document.getElementById("textInput");
 
 hideElement(elArena);
-//readInput();
-//createArena();
-//nextMatch();
 
 function startGame() {
     readInput();
@@ -40,19 +37,11 @@ function readInput() {
     inputArray.length = 0;
 
     // Assign string and array
-    //inputString = "Love" + "\n" + "Dying to Know" + "\n" + "Amnesia" + "\n" + "Christmas Eve" + "\n" + "Babysit" + "\n" + "MOTS";
-    /*inputString += "lost souls (feat. Brent Faiyaz)" + "\n"
-    inputString += "hooligan" + "\n"
-    inputString += "no sense" + "\n"
-    inputString += "a life of pain" + "\n"
-    inputString += "killstreaks (feat. Don Toliver & Pinkpatheress)" + "\n"
-    inputString += "patience interlude" + "\n"
-    inputString += "naked freestyle" + "\n"
-    inputString += "fine china" + "\n"
-    inputString += "highway 95" + "\n"
-    inputString += "bank account (feat. Lil Uzi Vert)"*/
-    inputString = elTextInput.value
+    inputString = elTextInput.value;
     inputArray = inputString.split("\n");
+
+    // Filter array
+    inputArray = inputArray.filter(item => item.trim().length > 0);
 }
 
 function createArena() {
@@ -80,6 +69,12 @@ function nextMatch() {
         allInPlay = true;
     }
 
+    // Display test totals
+    /*elUl.innerHTML = "";
+    for (i = 0; i < resultArray.length; i++) {
+        elUl.innerHTML += `<li>${inputArray[i]}: ${resultArray[i]}</li>`;
+    }*/
+
     // Check if first and second numbers are unequal, and as long as all items on list are 'in play', the matchup can be skipped because the answer is already known
     if (resultArray[firstButtonNumber] !== resultArray[secondButtonNumber] && allInPlay) {
         if (round === arenaArray.length) {
@@ -95,36 +90,29 @@ function clickButton(buttonNumber) {
     let temp = 0;
     let otherTemp = 0;
     let otherOtherTemp = 0;
-    /*if (buttonNumber === 1) { // First button
-        if (resultArray[firstButtonNumber] - 1 < resultArray[secondButtonNumber] - 1) {
-            resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
-            temp = resultArray[secondButtonNumber];
-        } else {
-            resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
-            temp = resultArray[secondButtonNumber] + 1;
-        }
-        otherTemp = secondButtonNumber;
-    } else { // Second button
-        resultArray[firstButtonNumber] = Math.min(resultArray[firstButtonNumber] - 1, resultArray[secondButtonNumber] - 1);
-        otherTemp = firstButtonNumber;
-        temp = resultArray[firstButtonNumber] + 1;
-    }*/
+
     if (buttonNumber === 1) { // First button
         if (resultArray[firstButtonNumber] - 1 < resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[secondButtonNumber];
-        } else {
+        } else if (resultArray[firstButtonNumber] - 1 > resultArray[secondButtonNumber] - 1) {
             resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[secondButtonNumber] + 1;
+        } else {
+            resultArray[secondButtonNumber] = resultArray[secondButtonNumber] - 1;
+            temp = resultArray[secondButtonNumber];
         }
         otherTemp = secondButtonNumber;
     } else { // Second button
         if (resultArray[secondButtonNumber] - 1 < resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[secondButtonNumber] - 1;
             temp = resultArray[firstButtonNumber];
-        } else {
+        } else if (resultArray[secondButtonNumber] - 1 > resultArray[firstButtonNumber] - 1) {
             resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
             temp = resultArray[firstButtonNumber] + 1;
+        } else {
+            resultArray[firstButtonNumber] = resultArray[firstButtonNumber] - 1;
+            temp = resultArray[firstButtonNumber];
         }
         otherTemp = firstButtonNumber;
     }
@@ -157,9 +145,9 @@ function endGame() {
 
     // Sort the results array to see winning order
     resultArray.sort(function(a,b) {return b[0]-a[0]});
-    //elUl.innerHTML = "";
+    elUl.innerHTML = "";
     for (i = 0; i < resultArray.length; i++) {
         /*elUl.innerHTML += `<li>${i + 1}. ${inputArray[i]}</li>`;*/
-        elUl.innerHTML += `<li>${i + 1}: ${resultArray[i][1]}</li>`;
+        elUl.innerHTML += `<li>${i + 1}. ${resultArray[i][1]}</li>`;
     }
 }
