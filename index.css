@@ -10,14 +10,23 @@ body {
     background-color: rgb(17, 42, 95);
 }
 
+h1 {
+    font-size: 150px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    font-size: 40px;
+    color: white;
+}
+
 .topBar {
     color: rgb(116, 255, 225);
 
     margin: 30px 0px 40px;
-}
-
-h1 {
-    font-size: 150px;
 }
 
 .arena {
@@ -44,6 +53,20 @@ h1 {
     /*margin: 26px;*/
 }
 
+.input button {
+    background-color: rgb(116, 255, 225);
+
+    width: 50%;
+    height: 120px;
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 50px;
+
+    margin-top: 20px;
+}
+
 #firstButton {
     /*margin-right: 13px;*/
     margin-bottom: 25px;
@@ -51,4 +74,11 @@ h1 {
 
 #secondButton {
     /*margin-left: 13px;*/
+}
+
+#textInput {
+    width: 90%;
+    height: 1200px;
+    font-size: 60px;
+    text-align: left;
 }

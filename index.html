@@ -8,9 +8,17 @@
         <div class="topBar">
             <h1>VERSUS</h1>
         </div>
-        <div class="arena">
-            <button id="firstButton">Song One</button>
-            <button id="secondButton">Song Two</button>
+        <div class="input" id="input-el">
+            <!--<input type="text" id="textInput">-->
+            <textarea id="textInput"></textarea>
+            <button onclick="startGame()">Go</button>
         </div>
+        <div class="arena" id="arena-el">
+            <button id="firstButton" onclick="clickButton(1)">Song One</button>
+            <button id="secondButton" onclick="clickButton(2)">Song Two</button>
+            <!--<button onclick="nextMatch()">SKIP</button>-->
+        </div>
+        <ul id="testList"></ul>
+        <script src="index.js"></script>
     </body>
 </html>
