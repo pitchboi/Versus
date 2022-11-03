@@ -140,6 +140,9 @@ function changeButtonColor(state, object) {
         case "click":
             color = cssRootStyle.getPropertyValue('--button-color-click');
             break;
+        case "unclick":
+            color = cssRootStyle.getPropertyValue('--button-color-hover');
+            break;
         default:
             color = cssRootStyle.getPropertyValue('--button-color-normal');
             break;
