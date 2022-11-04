@@ -1,14 +1,7 @@
 let inputString = "";
-let inputArray = [];
-let arenaArray = [];
-let resultArray = [];
-let tempArray = [];
-let round = 0;
-let iteration = 0;
-let efficiency = 0;
+let inputArray = [], arenaArray = [], resultArray = [], tempArray = [];
+let round = 0, iteration = 0, efficiency = 0, firstButtonNumber = 0, secondButtonNumber = 0;
 let matches = 1;
-let firstButtonNumber = 0;
-let secondButtonNumber = 0;
 
 const elUl = document.getElementById("testList");
 const elFirstButton = document.getElementById("firstButton");
